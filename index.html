@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天主教鳴遠中學校友會 | Catholic Ming Yuen Secondary School Alumni Association</title>
+    <!-- 引入共用樣式表與組件載入腳本 -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="layout.js" defer></script>
+    <style>
+        /* Hero 區塊：彈性佈局置中與向下對齊 */
+        .hero {
+            padding: 50px 20px;
+            text-align: center;
+            min-height: 260px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            color: var(--primary-color, #003366);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #555555;
+            line-height: 1.8;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background-color: var(--secondary-color, #d4af37);
+            color: var(--primary-color, #003366);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .btn:hover {
+            background-color: #b89628;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 背景音樂浮動控制面板（設定為 bottom: 35px） */
+        .audio-player-widget {
+            position: fixed;
+            bottom: 35px;
+            right: 20px;
+            z-index: 9999;
+            background: #ffffff; /* 白底 */
+            border: 2px solid #003366; /* 藍邊 */
+            color: #555555; /* 灰字 */
+            padding: 6px 14px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* 播放/暫停按鈕：淺灰底、藍邊、灰字 */
+        .audio-player-widget button {
+            background: #f0f0f0; /* 淺灰色底 */
+            color: #555555; /* 灰字 */
+            border: 1px solid #003366; /* 藍邊 */
+            padding: 4px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .audio-player-widget button:hover {
+            background: #003366; /* 懸停切換為藍底 */
+            color: #ffffff; /* 白字 */
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 40px 15px; min-height: auto; }
+            .hero h2 { font-size: 1.8rem; margin-top: 15px; }
+            .hero p { font-size: 1rem; margin-top: 20px; }
+            .audio-player-widget { bottom: 35px; right: 10px; } /* 手機版同步設定為 35px */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景音樂播放器 -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="background.mp3" type="audio/mpeg">
+        <source src="song.mid" type="audio/midi">
+    </audio>
+
+    <!-- 音樂控制懸浮面板 -->
+    <div class="audio-player-widget">
+        <span id="audio-status">🎵 校歌音樂</span>
+        <button id="audio-toggle-btn" onclick="toggleAudio()">▶ 播放</button>
+    </div>
+
+    <!-- 頂部導航欄（由 layout.js 動態載入 header.html） -->
+    <div id="site-header"></div>
+
+    <!-- 首頁專屬 Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>銘記校訓 ‧ 永續鳴遠情</h2>
+            <p>歡迎回到天主教鳴遠中學校友會。無論您身在何處，這裡永遠是每一位鳴遠人的家。</p>
+            <a href="https://forms.gle/wpKRLr8KXp7PDid16" target="_blank" class="btn">立即登記成為會員</a>
+        </div>
+    </section>
+
+    <!-- 最新消息與核心服務區塊 -->
+    <section class="container" id="about">
+        <h2 class="section-title">校友會服務</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>校友網絡重聚</h3>
+                <p>定期舉辦週年聚餐、校慶活動及跨屆別座談會，協助不同年代畢業的校友重聚，保持緊密聯繫。</p>
+            </div>
+            <div class="card">
+                <h3>母校傳承與支持</h3>
+                <p>設立校友獎學金，分享行業經驗與職涯指導，積極回饋母校，培育下一代鳴遠學子。</p>
+            </div>
+            <div class="card">
+                <h3>會務資訊公開</h3>
+                <p>提供最新校友會章程、幹事會名單、會議紀錄及財務報告，保持會務公開透明。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾資訊（由 layout.js 動態載入 footer.html） -->
+    <div id="site-footer"></div>
+
+    <script>
+        const audio = document.getElementById('bg-audio');
+        const toggleBtn = document.getElementById('audio-toggle-btn');
+
+        // 僅允許使用者主動點擊按鈕控制播放
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    toggleBtn.innerText = '❚❚ 暫停';
+                }).catch(err => {
+                    alert('播放失敗，請確保音樂檔案 (.mp3) 已放置於目錄下');
+                });
+            } else {
+                audio.pause();
+                toggleBtn.innerText = '▶ 播放';
+            }
+        }
+    </script>
+</body>
+</html>

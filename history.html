@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鳴遠簡史 | 天主教鳴遠中學校友會</title>
+    <!-- 引入共用樣式表與組件載入腳本 -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="layout.js" defer></script>
+    <style>
+        :root {
+            --primary-color: #003366; /* 鳴遠藍 */
+            --secondary-color: #d4af37; /* 聖潔金 */
+            --light-bg: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
+                        url('https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .page-banner p {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        /* 按鈕群組容器 */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .memorial-btn, .founder-btn, .principal-btn, .school-btn, .song-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.25s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none;
+        }
+
+        .memorial-btn {
+            background-color: #004d99;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .memorial-btn:hover, .memorial-btn.active {
+            background-color: #0066cc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .founder-btn {
+            background-color: var(--secondary-color);
+            color: #003366 !important;
+        }
+
+        .founder-btn:hover, .founder-btn.active {
+            background-color: #e5be38;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .principal-btn {
+            background-color: #8e24aa;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .principal-btn:hover, .principal-btn.active {
+            background-color: #ab47bc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .school-btn {
+            background-color: #2e7d32;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .school-btn:hover, .school-btn.active {
+            background-color: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .song-btn {
+            background-color: #d81b60;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .song-btn:hover, .song-btn.active {
+            background-color: #e91e63;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+            min-height: 600px; /* 設定最小高度保護，確保切換時畫面不坍塌 */
+        }
+
+        .intro-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
+        }
+
+        .intro-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* 動態面板容器 */
+        .dynamic-panel {
+            display: none;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border-top: 4px solid var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(-10px);
+        }
+
+        .dynamic-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dynamic-panel h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+
+        .panel-content {
+            width: 100%;
+            min-height: 400px; /* 給予內部足夠的最小高度 */
+            transition: all 0.3s ease;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #cbd5e1;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+            z-index: 10;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            border-top: 3px solid transparent;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.25);
+            background-color: var(--primary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .timeline-year {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: inline-block;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 2px;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .timeline-body p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #475569;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 10px !important;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航列 -->
+    <div id="site-header"></div>
+
+    <!-- 頁面 Banner -->
+    <section class="page-banner">
+        <h2>鳴遠簡史</h2>
+        <p>自 1950 年草創自強 ‧ 傳承天主教育精神</p>
+        <div class="btn-group">
+            <button class="memorial-btn" onclick="loadAndTogglePanel('panel-memorial', 'memorial.html')">✝️ 雷鳴遠神父</button>
+            <button class="founder-btn" onclick="loadAndTogglePanel('panel-founder', 'firstmas.html')">🏫 曹立珊神父</button>
+            <button class="principal-btn" onclick="loadAndTogglePanel('panel-principal', 'master.html')">👔 歷任校長</button>
+            <button class="school-btn" onclick="loadAndTogglePanel('panel-school', 'school.html')">🖼️ 校舍演變</button>
+            <button class="song-btn" onclick="loadAndTogglePanel('panel-song', 'song.html')">🎵 母校校歌</button>
+        </div>
+    </section>
+
+    <!-- 主內容區 -->
+    <main class="container">
+
+        <!-- 動態展現面板 -->
+        <div id="panel-memorial" class="dynamic-panel">
+            <h4>✝️ 雷鳴遠神父</h4>
+            <div class="panel-content"></div>
+        </div>
+
+        <div id="panel-founder" class="dynamic-panel">
+            <h4>🏫 曹立珊神父</h4>
+            <div class="panel-content"></div>
+        </div>
+
+        <div id="panel-principal" class="dynamic-panel">
+            <h4>👔 歷任校長</h4>
+            <div class="panel-content"></div>
+        </div>
+
+        <div id="panel-school" class="dynamic-panel">
+            <h4>🖼️ 校舍演變</h4>
+            <div class="panel-content"></div>
+        </div>
+
+        <div id="panel-song" class="dynamic-panel">
+            <h4>🎵 母校校歌</h4>
+            <div class="panel-content"></div>
+        </div>
+
+        <!-- 預設簡史與時間軸內容 -->
+        <div id="default-history-content">
+            
+            <div class="intro-card">
+                <h3>歲月流芳 ‧ 薪火相傳</h3>
+                <p>天主教鳴遠中學自 1950 年創校以來，歷經調景嶺葵棚木屋草創期、露比颱風後的堅毅重建，直至 1993 年遷往將軍澳現址。幾十年來在歷任神父、校監及校長的領導下，資料保存完整，栽培無數莘莘學子，見證了香港教育與社會的蓬勃發展。</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1950 年 9 月 15 日</span>
+                        <div class="timeline-title">草創成立 ‧ 調景嶺五區</div>
+                        <div class="timeline-body">
+                            <p>「天主堂私立義務學校」於調景嶺五區成立。當時僅設葵棚與帆布棚各一座，設小學六班，學生 100 名，教師 6 人。</p>
+                            <span class="badge">首任校長：曹神父</span>
+                            <span class="badge">教務主任：丁慕南老師</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1951 – 1953 年</span>
+                        <div class="timeline-title">規模漸具 ‧ 體育捷報</div>
+                        <div class="timeline-body">
+                            <p>1951年增建木屋教室四間及球場，首設中學部。1952年擴建辦公室、圖書館、宿舍等設施，學生增至420餘人。</p>
+                            <p>1952年與1953年連續兩屆榮獲「嶺上聯校運動會」總冠軍！1953年迎接第一屆初中畢業生共15人。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1954 – 1959 年</span>
+                        <div class="timeline-title">校歌誕生 ‧ 聖母聖心會接手</div>
+                        <div class="timeline-body">
+                            <p>1954年范景才神父代任校長，後由沈鼎臣神父接任並作校歌一首（沿用至今）。1956年李若石神父接任校長。</p>
+                            <p>1959年聖母聖心會雷震東神父接任校長，中學部拓展至九班。此後傅世道神父、何德光神父及富希永神父（均為比利時籍）相續主持校務。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1964 – 1972 年</span>
+                        <div class="timeline-title">風災重建 ‧ 註冊會考</div>
+                        <div class="timeline-body">
+                            <p>1964年露比颱風嚴重毀壞校舍，何德光神父（1972年起長期擔任校監）籌資重建。1965年建成6層高小學大樓及2層高中學部新校舍。</p>
+                            <p>中小學正式於香港教署註冊，學生開始參加香港中學會考及升中試。1968-1974年間建兩座男生宿舍，中學增至18班。1972年鄧永生先生接任校長（任期長達27年）。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1993 年</span>
+                        <div class="timeline-title">遷校將軍澳 ‧ 邁向新里程</div>
+                        <div class="timeline-body">
+                            <p>奉香港政府之命遷至將軍澳現址，學校正式改名為<strong>「天主教鳴遠中學」</strong>。在鄧永生校長統籌下，遷校事務井井有條，並完整保存了創校以來的歷史檔案資料。</p>
+                            <span class="badge">關鍵轉折點</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">1999 年至今</span>
+                        <div class="timeline-title">世紀交替 ‧ 繼往開來</div>
+                        <div class="timeline-body">
+                            <p>1999年9月，鄧永生校長榮休，由關怡清女士接任校長，帶領鳴遠中學邁向千禧新時代，延續優良教學傳統與天主教愛德精神。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾區塊 -->
+    <div id="site-footer"></div>
+
+    <script>
+        async function loadAndTogglePanel(panelId, pageUrl) {
+            const targetPanel = document.getElementById(panelId);
+            const contentDiv = targetPanel.querySelector('.panel-content');
+            const defaultContent = document.getElementById('default-history-content');
+            const isCurrentlyActive = targetPanel.classList.contains('active');
+
+            // 隱藏所有動態面板
+            document.querySelectorAll('.dynamic-panel').forEach(panel => {
+                panel.classList.remove('active');
+                panel.style.display = 'none';
+            });
+
+            if (!isCurrentlyActive) {
+                if (!contentDiv.dataset.loaded) {
+                    try {
+                        contentDiv.innerHTML = '<p style="text-align:center; padding: 40px; color: #666;">資料載入中...</p>';
+                        const response = await fetch(pageUrl);
+                        const htmlText = await response.text();
+                        
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(htmlText, 'text/html');
+                        
+                        // 1. 抓取子頁面內的所有 <style> 樣式，確保圖片與網格（Grid）格式正確
+                        const styles = doc.querySelectorAll('style');
+                        let styleHTML = '';
+                        styles.forEach(style => {
+                            styleHTML += style.outerHTML;
+                        });
+
+                        // 2. 抓取子頁面的 main 或 body 內容
+                        const mainContent = doc.querySelector('main') || doc.body;
+                        
+                        // 3. 將樣式與內容同步放入面板中
+                        contentDiv.innerHTML = styleHTML + mainContent.innerHTML;
+                        contentDiv.dataset.loaded = "true";
+                    } catch (error) {
+                        contentDiv.innerHTML = '<p style="color:red; text-align:center; padding: 20px;">內容載入失敗，請稍後再試。</p>';
+                    }
+                }
+
+                defaultContent.style.display = 'none';
+                targetPanel.style.display = 'block';
+                
+                setTimeout(() => {
+                    targetPanel.classList.add('active');
+                    targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 20);
+
+            } else {
+                targetPanel.classList.remove('active');
+                targetPanel.style.display = 'none';
+                defaultContent.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

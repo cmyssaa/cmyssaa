@@ -1,0 +1,166 @@
+<style>
+    /* Footer 專屬樣式 */
+    .footer-col a.info-link {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+    }
+
+    .footer-col a.info-link:hover {
+        color: #d4af37; /* 懸停時轉換為金黃色 */
+    }
+
+    /* 水平排列容器 (預設居中，首頁將由 JS 動態改為 left) */
+    .footer-single-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .footer-info-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* 圓形圖示標籤樣式 (四個項目統一風格) */
+    .footer-social-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        color: #ffffff !important;
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+
+    .footer-social-badge:hover {
+        transform: translateY(-2px) scale(1.1);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* 各圖示專屬底色 */
+    .footer-social-badge.loc-badge {
+        background-color: #d4af37; /* 地址：聖潔金 */
+        color: #003366 !important;
+    }
+
+    .footer-social-badge.mail-badge {
+        background-color: #555555; /* 電郵：簡約灰 */
+    }
+
+    .footer-social-badge.wa-badge {
+        background-color: #25d366; /* WhatsApp：品牌綠 */
+    }
+
+    .footer-social-badge.fb-badge {
+        background-color: #1877f2; /* Facebook：品牌藍 */
+    }
+
+    /* 分隔線 */
+    .footer-divider {
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* 電腦版預設顯示文字 */
+    .item-text {
+        display: inline;
+    }
+
+    /* 手機版排版：順序同電腦版，全純 Icon 顯示 */
+    @media (max-width: 768px) {
+        .footer-single-row {
+            gap: 12px; /* 圖示間距 */
+        }
+
+        /* 手機版隱藏所有項目的文字 */
+        .item-text {
+            display: none !important;
+        }
+
+        /* 手機版無需換行標籤 */
+        .footer-break-mobile {
+            display: none;
+        }
+    }
+</style>
+
+<!-- 引入 FontAwesome 圖示庫 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<footer id="contact">
+    <div id="footer-container-box" class="footer-container" style="justify-content: center; text-align: center;">
+        <div class="footer-col" style="max-width: 100%; width: 100%;">
+            <h4>天主教鳴遠中學校友會</h4>
+            
+            <div id="footer-row-box" class="footer-single-row">
+                <!-- 1. 地址 -->
+                <div class="footer-info-item">
+                    <a href="https://maps.app.goo.gl/Nor7hsMVe8QgC63Z7" target="_blank" class="footer-social-badge loc-badge" title="地址：香港新界將軍澳厚德邨">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </a>
+                    <span class="item-text"><a href="https://maps.app.goo.gl/Nor7hsMVe8QgC63Z7" target="_blank" class="info-link">香港新界將軍澳厚德邨</a></span>
+                </div>
+
+                <span class="footer-divider">|</span>
+
+                <!-- 2. 電郵 -->
+                <div class="footer-info-item">
+                    <a href="mailto:cmyssaa.1950@gmail.com" class="footer-social-badge mail-badge" title="電郵：cmyssaa.1950@gmail.com">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                    <span class="item-text"><a href="mailto:cmyssaa.1950@gmail.com" class="info-link">cmyssaa.1950@gmail.com</a></span>
+                </div>
+
+                <span class="footer-divider">|</span>
+
+                <!-- 3. WhatsApp -->
+                <div class="footer-info-item">
+                    <a href="https://wa.me/85266527102" target="_blank" class="footer-social-badge wa-badge" title="WhatsApp：+852 6652 7102">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <span class="item-text"><a href="https://wa.me/85266527102" target="_blank" class="info-link">+852 6652 7102</a></span>
+                </div>
+
+                <span class="footer-divider">|</span>
+
+                <!-- 4. Facebook -->
+                <div class="footer-info-item">
+                    <a href="https://www.facebook.com/cmyssaa" target="_blank" class="footer-social-badge fb-badge" title="Facebook：fb.com/cmyssaa">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <span class="item-text"><a href="https://www.facebook.com/cmyssaa" target="_blank" class="info-link">fb.com/cmyssaa</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 版權宣告：置中 -->
+    <div class="copyright" style="margin-top: 15px; text-align: center;">
+        <p>&copy; 天主教鳴遠中學校友會 版權所有 All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // 自動判斷當前頁面：若為 index.html，聯絡資訊與容器靠左對齊
+    (function alignFooterForIndex() {
+        const path = window.location.pathname.split("/").pop();
+        if (path === "index.html" || path === "" || path === "index_2.html") {
+            const containerBox = document.getElementById("footer-container-box");
+            const rowBox = document.getElementById("footer-row-box");
+            if (containerBox) {
+                containerBox.style.justifyContent = "flex-start";
+                containerBox.style.textAlign = "left";
+            }
+            if (rowBox) {
+                rowBox.style.justifyContent = "flex-start";
+            }
+        }
+    })();
+</script>

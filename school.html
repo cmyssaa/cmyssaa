@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校舍變化 | 天主教鳴遠中學校友會</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #d4af37;
+            --light-bg: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--light-bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Banner 區塊 */
+        .page-banner {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
+                        url('school/54mlight.jpg') center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .page-banner p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* 介紹卡片 */
+        .intro-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .intro-card p {
+            font-size: 1.05rem;
+            color: #006600;
+            margin: 0;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        /* 相片網格區塊 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 51, 102, 0.12);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .photo-card p {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .intro-card {
+                padding: 20px;
+            }
+            .page-banner h2 {
+                font-size: 1.8rem;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            .photo-card img {
+                height: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁面 Banner -->
+    <section class="page-banner">
+        <h2>校舍變化</h2>
+        <p>從茅舍草創到現代化校舍 ‧ 見證鳴遠歲月足跡</p>
+    </section>
+
+    <!-- 主內容區 -->
+    <main class="container">
+
+        <!-- 簡介區塊 -->
+        <div class="intro-card">
+            <p>本來一家學校的校舍是沒有甚麼好說的，但是我們鳴遠中學卻不一樣，因為，全香港沒有一家學校會像鳴遠中學一樣，是從茅舍開始的。鳴遠中學的校舍，從無到有，從簡陋到齊備，從舊到新，這個過程也象徵著香港的發展，也就是說，鳴遠中學與香港同步並進，我們又怎能不對鳴遠的未來充滿希望呢？</p>
+        </div>
+
+        <!-- 照片歷史網格 -->
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img src="school/50hut1.jpg" alt="1950原始校舍">
+                <p>1950原始校舍</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/50children1.jpg" alt="1950臥虎藏龍">
+                <p>1950臥虎藏龍</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/50mingh1.jpg" alt="1950原始校舍">
+                <p>1950原始校舍</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/51mingy1.jpg" alt="1951養氣之所">
+                <p>1951養氣之所</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/52mingy1.jpg" alt="1952心誠則靈">
+                <p>1952心誠則靈</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/53work1.jpg" alt="1953學生勞動">
+                <p>1953學生勞動</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/52build1.jpg" alt="1953老師建校">
+                <p>1953老師建校</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/53mingy1.jpg" alt="1953新舍建成">
+                <p>1953新舍建成</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/53mingya1.jpg" alt="1953初具規模">
+                <p>1953初具規模</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/54mingy1.jpg" alt="1953頗有氣勢">
+                <p>1953頗有氣勢</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/54nunh1.jpg" alt="1954修女院">
+                <p>1954修女院</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/60mingbo1.jpg" alt="1954童稚可愛">
+                <p>1954童稚可愛</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/54mings1.jpg" alt="1958麻雀雖小">
+                <p>1958麻雀雖小</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/60mingy1.jpg" alt="1960錯落有緻">
+                <p>1960錯落有緻</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/60mainb1.jpg" alt="1960辦公大樓">
+                <p>1960辦公大樓</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/63playg1.jpg" alt="1963英雄舞台">
+                <p>1963英雄舞台</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/63seniorb1.jpg" alt="1963高中大樓">
+                <p>1963高中大樓</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/63girld1.jpg" alt="1963女生宿舍">
+                <p>1963女生宿舍</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/64rubb1.jpg" alt="1964颱風過後">
+                <p>1964颱風過後</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/64ruby1.jpg" alt="1964露比嬌嗔">
+                <p>1964露比嬌嗔</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/65nbuild1.jpg" alt="1965新校建成">
+                <p>1965新校建成</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/68mingy1.jpg" alt="1970頗具規模">
+                <p>1970頗具規模</p>
+            </div>
+
+            <div class="photo-card">
+                <img src="school/93schdoor2.jpg" alt="2000新校大門">
+                <p>2000新校大門</p>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

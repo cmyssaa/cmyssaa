@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創校者－曹立珊神父 | 天主教鳴遠中學校友會</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #d4af37;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: #f4f6f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Banner 區塊 */
+        .page-banner {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.9)), 
+                        url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?q=80&w=1470&auto=format&fit=crop') center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .page-banner p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* 介紹卡片 */
+        .intro-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .intro-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .intro-card p {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* 珍貴歷史圖片網格 */
+        .gallery-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 35px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .gallery-section h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .photo-card {
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 51, 102, 0.12);
+        }
+
+        .photo-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            object-fit: cover;
+        }
+
+        .photo-card p {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        /* 外部連結區塊 */
+        .reference-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px 35px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .reference-section a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        .reference-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .intro-card, .gallery-section, .reference-section {
+                padding: 22px;
+            }
+            .page-banner h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁面 Banner -->
+    <section class="page-banner">
+        <h2>創校者－曹立珊神父</h2>
+        <p>興學育才 ‧ 薪火相傳 ‧ 創校基石</p>
+    </section>
+
+    <!-- 主內容區 -->
+    <main class="container">
+
+        <!-- 文字介紹區塊 -->
+        <article class="intro-card">
+            <h3>創校歲月與精神傳承</h3>
+            <p>每家學校都必定有一位創辦者，我們學校的創辦者是<strong>曹立珊神父</strong>。他是雷鳴遠神父的弟子，在 1950 年來到調景嶺這個荒山野嶺，創辦了一所學校來紀念他的老師。當然最主要的目的是不忍心調景嶺子弟們失學。最早的校名是<span class="highlight-text">「天主堂私立義務學校」</span>，後來才一步一步發展成為鳴遠中學，直到 1993 年遷校到將軍澳才改名為<span class="highlight-text">「天主教鳴遠中學」</span>。雖然其中曲折頗多，但創校者之名不可忘記。</p>
+            
+            <p>到今天，曹神父仍然以九十多歲高齡到處奔波，先後在越南西貢，美國洛杉磯及紐約創辦了<strong>鳴遠華文學校</strong>。他的精神，足為年青人表率。</p>
+        </article>
+
+        <!-- 歷史影像網格區塊 -->
+        <section class="gallery-section">
+            <h3>珍貴歷史照片</h3>
+
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="master/a1aaa.gif" alt="1953 曹神父與校舍">
+                    <p>1953 曹神父與校舍</p>
+                </div>
+
+                <div class="photo-card">
+                    <img src="master/2awriting.gif" alt="曹神父手稿紀錄">
+                    <p>曹神父手稿紀錄</p>
+                </div>
+
+                <div class="photo-card">
+                    <img src="master/a2aaa.gif" alt="1953 的曹神父">
+                    <p>1953 的曹神父</p>
+                </div>
+
+                <div class="photo-card">
+                    <img src="master/1953picnica.jpg" alt="1953 曹神父與學生">
+                    <p>1953 曹神父與學生</p>
+                </div>
+
+                <div class="photo-card">
+                    <img src="master/1aa.gif" alt="最早的校徽">
+                    <p>最早的校徽</p>
+                </div>
+
+                <div class="photo-card">
+                    <img src="master/a3aaa.jpg" alt="曹神父近照">
+                    <p>曹神父近照</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 相關參考資料 -->
+        <section class="reference-section">
+            <p>維基百科參考：<a href="https://zh.wikipedia.org/zh-hk/曹立珊" target="_blank" rel="noopener noreferrer">曹立珊神父</a></p>
+        </section>
+
+    </main>
+
+</body>
+</html>

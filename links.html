@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網絡專區 | 天主教鳴遠中學校友會</title>
+    <!-- 引入共用樣式表與組件載入腳本 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入 FontAwesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="layout.js" defer></script>
+    <style>
+        :root {
+            --primary-color: #003366; /* 鳴遠藍 */
+            --secondary-color: #d4af37; /* 聖潔金 */
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
+                        url('building_337.jpg') center/cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .page-banner p {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        /* 沿用 Gallery 風格卡片 */
+        .gallery-item {
+            display: block;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            background-color: var(--light-bg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-info {
+            padding: 18px;
+            background: #ffffff;
+        }
+
+        .gallery-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .gallery-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* Icon 連結列容器 */
+        .inline-links-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            margin-top: 10px;
+            padding-top: 12px;
+            border-top: 1px dashed #eee;
+        }
+
+        .sub-links-inline {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        /* 彩色 Icon 按鈕基礎樣式 */
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.35rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 各品牌獨立彩色色彩設定 */
+        /* 官網 */
+        .icon-btn.web-btn {
+            background-color: #e6f0fa;
+            color: var(--primary-color);
+        }
+        .icon-btn.web-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Facebook */
+        .icon-btn.fb-btn {
+            background-color: #e7f3ff;
+            color: #1877f2;
+        }
+        .icon-btn.fb-btn:hover {
+            background-color: #1877f2;
+        }
+
+        /* Instagram (漸層色) */
+        .icon-btn.ig-btn {
+            background-color: #fdebf3;
+            color: #e1306c;
+        }
+        .icon-btn.ig-btn:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        /* YouTube */
+        .icon-btn.yt-btn {
+            background-color: #ffe6e6;
+            color: #ff0000;
+        }
+        .icon-btn.yt-btn:hover {
+            background-color: #ff0000;
+        }
+
+        /* 維基百科 */
+        .icon-btn.wiki-btn {
+            background-color: #f0f0f0;
+            color: #333333;
+        }
+        .icon-btn.wiki-btn:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導航列（由 layout.js 動態引入 header.html） -->
+    <div id="site-header"></div>
+
+    <!-- 頁面 Banner -->
+    <section class="page-banner">
+        <h2>網絡專區</h2>
+        <p>實用連結 ‧ 校園資訊 ‧ 官方平台</p>
+    </section>
+
+    <main class="container">
+        <!-- Gallery 款式五合一卡片（彩色 Icon 版） -->
+        <div class="gallery-item">
+            <img src="building_337.jpg" alt="天主教鳴遠中學校舍">
+            <div class="gallery-info">
+                <div class="gallery-title">天主教鳴遠中學 網絡專區</div>
+                <div class="gallery-desc">歡迎關注與追蹤母校各大官方平台及維基百科條目，隨時獲取最新校園動態與歷史資訊。</div>
+                
+                <div class="inline-links-container">
+                    <div class="sub-links-inline">
+                        <a href="https://www.mingyuen.edu.hk/" target="_blank" class="icon-btn web-btn" title="官方網站">
+                            <i class="fa-solid fa-globe"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=100089066184281" target="_blank" class="icon-btn fb-btn" title="Facebook 專頁">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ming_yuen_cmyss/" target="_blank" class="icon-btn ig-btn" title="Instagram 專頁">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@cmyss_mingyuen" target="_blank" class="icon-btn yt-btn" title="YouTube 頻道">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://zh.wikipedia.org/zh-hk/天主教鳴遠中學" target="_blank" class="icon-btn wiki-btn" title="維基百科">
+                            <i class="fa-brands fa-wikipedia-w"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾區塊（由 layout.js 動態引入 footer.html） -->
+    <div id="site-footer"></div>
+
+</body>
+</html>
