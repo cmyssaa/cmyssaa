@@ -776,6 +776,19 @@ footer {
     gap: 15px;
 }
 
+.index-page-footer .footer-container {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.index-page-footer .footer-single-row {
+    justify-content: flex-start;
+}
+
+.index-page-footer .copyright {
+    text-align: center;
+}
+
 .footer-col {
     max-width: 100%;
     width: 100%;

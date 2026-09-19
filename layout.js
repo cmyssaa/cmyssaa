@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((data) => {
                 footerHost.innerHTML = data;
                 rewriteRootLinks(footerHost, siteRoot);
+
+                const isIndexPage = (window.location.pathname.split("/").pop() || "index.html") === "index.html";
+                const footer = footerHost.querySelector("footer");
+                if (footer && isIndexPage) {
+                    footer.classList.add("index-page-footer");
+                }
             });
     }
 
