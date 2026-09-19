@@ -4,391 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>相簿 | 天主教鳴遠中學校友會</title>
+    <meta name="description" content="天主教鳴遠中學校友會相簿：75、65、55 周年校慶及台灣行活動照片。">
+    <meta property="og:title" content="相簿 | 天主教鳴遠中學校友會">
+    <meta property="og:description" content="珍藏經典時刻 ‧ 記錄鳴遠回憶">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="layout.js" defer></script>
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --primary-color: #003366;
-            --secondary-color: #d4af37;
-            --light-bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-dark: #333333;
-            --text-muted: #666666;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: #ffffff;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        .page-banner {
-            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
-                        url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1350&q=80') center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 60px 20px;
-            width: 100%;
-        }
-
-        .page-banner h2 { font-size: 2.2rem; margin-bottom: 10px; color: #ffffff; }
-        .page-banner p { color: var(--secondary-color); font-size: 1.1rem; font-weight: 500; }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 500px;
-            width: 100%;
-        }
-
-        /* 動態展現面板 */
-        .dynamic-panel {
-            display: none;
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            border-top: 4px solid var(--primary-color);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            transform: translateY(-10px);
-            width: 100%;
-        }
-
-        .dynamic-panel.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .dynamic-panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-
-        .dynamic-panel-header h4 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin: 0;
-            flex: 1;
-        }
-
-        /* 控制按鈕組 */
-        .panel-action-btns {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .share-btn {
-            background-color: #f0f4f8;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .share-btn:hover {
-            background-color: var(--secondary-color);
-            color: #ffffff;
-            border-color: var(--secondary-color);
-        }
-
-        .close-panel-btn {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: background-color 0.2s ease;
-        }
-
-        .close-panel-btn:hover { background-color: #002244; }
-
-        /* 子相冊 Grid 樣式 */
-        .sub-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 15px;
-            width: 100%;
-        }
-
-        .sub-photo-card {
-            position: relative;
-            border-radius: 6px;
-            overflow: hidden;
-            background: #eee;
-            aspect-ratio: 4 / 3;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .sub-photo-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .sub-photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* 主相片選單 Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        .gallery-item {
-            display: block;
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            background-color: var(--light-bg);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-info { padding: 15px; background: #ffffff; }
-
-        .gallery-title {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .inline-links-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4px;
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px dashed #eee;
-            flex-wrap: wrap;
-        }
-
-        .inline-links-container .gallery-date { white-space: nowrap; font-size: 0.85rem; color: var(--text-muted); }
-
-        .sub-links-inline {
-            display: flex;
-            gap: 4px;
-            flex-grow: 1;
-            justify-content: flex-end;
-        }
-
-        .sub-btn {
-            text-align: center;
-            background-color: #f0f4f8;
-            color: var(--primary-color);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            cursor: pointer;
-        }
-
-        .sub-btn:hover { background-color: var(--primary-color); color: #ffffff; }
-        .sub-btn.fb-btn { background-color: #1877f2; color: #ffffff; }
-        .sub-btn.fb-btn:hover { background-color: #115cbf; }
-
-        /* 全螢幕燈箱樣式 */
-        #main-lightbox { 
-            display: none; 
-            position: fixed !important; 
-            top: 0 !important; 
-            left: 0 !important; 
-            width: 100vw !important; 
-            height: 100vh !important; 
-            background: rgba(0, 0, 0, 0.92) !important; 
-            z-index: 9999999 !important; 
-            justify-content: center !important; 
-            align-items: center !important;
-            user-select: none;
-        }
-
-        #main-lightbox.active { display: flex !important; }
-
-        #main-lightbox img#lightboxImg { 
-            max-width: 85vw !important; 
-            max-height: 80vh !important; 
-            object-fit: contain !important;
-            border-radius: 4px; 
-            display: block !important;
-        }
-        
-        #main-lightbox .close-btn { 
-            position: absolute !important; 
-            top: 20px !important; 
-            right: 25px !important; 
-            color: #fff !important; 
-            font-size: 2.5rem !important; 
-            cursor: pointer !important; 
-            z-index: 10000000 !important; 
-        }
-        
-        #main-lightbox .nav-btn {
-            position: absolute !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            font-size: 3rem !important;
-            cursor: pointer !important;
-            padding: 15px !important;
-            z-index: 10000000 !important;
-        }
-        #main-lightbox .prev-btn { left: 15px !important; }
-        #main-lightbox .next-btn { right: 15px !important; }
-
-        #main-lightbox .lightbox-info {
-            position: absolute !important;
-            bottom: 20px !important;
-            color: #ffffff !important;
-            font-size: 1rem !important;
-            text-align: center !important;
-            z-index: 10000000 !important;
-        }
-    </style>
 </head>
-<body>
+<body class="page-gallery">
 
     <div id="site-header"></div>
+    <noscript>
+        <nav><a href="index.html">首頁</a> · <a href="gallery.html">相簿</a></nav>
+    </noscript>
 
-    <section class="page-banner">
+    <section class="page-banner banner-photo">
         <h2>相簿</h2>
         <p>珍藏經典時刻 ‧ 記錄鳴遠回憶</p>
     </section>
 
-    <main class="container">
-
-        <!-- 動態面板容器 -->
+    <main class="container" id="main-content">
         <div id="gallery-panel" class="dynamic-panel">
             <div class="dynamic-panel-header">
                 <h4 id="panel-title">相冊展示</h4>
                 <div class="panel-action-btns">
-                    <button class="share-btn" onclick="copyAlbumLink()">🔗 複製連結</button>
-                    <button class="close-panel-btn" onclick="closeGalleryPanel()">✕ 關閉相冊</button>
+                    <button type="button" class="share-btn" id="copy-album-btn">🔗 複製連結</button>
+                    <button type="button" class="close-panel-btn" id="close-album-btn">✕ 關閉相冊</button>
                 </div>
             </div>
             <div id="panel-content"></div>
         </div>
 
-        <!-- 主選單卡片 -->
-        <div id="default-gallery-grid" class="gallery-grid">
-            
-            <!-- 75週年相冊卡片 -->
-            <div class="gallery-item">
-                <img src="./gallery/2025_75th/1/photos/75周年晚宴照片%20學生與校友合照18.jpg" alt="75週年校慶">
-                <div class="gallery-info">
-                    <div class="gallery-title">75週年校慶專區</div>
-                    <div class="inline-links-container">
-                        <div class="gallery-date">📅 鑽禧校慶</div>
-                        <div class="sub-links-inline">
-                            <span onclick="loadPhotosFromJson('75週年校慶 - 輯一', './gallery/2025_75th/1/', '75th_1')" class="sub-btn">輯一</span>
-                            <span onclick="loadPhotosFromJson('75週年校慶 - 輯二', './gallery/2025_75th/2/', '75th_2')" class="sub-btn">輯二</span>
-                            <span onclick="loadPhotosFromJson('75週年校慶 - 輯三', './gallery/2025_75th/3/', '75th_3')" class="sub-btn">輯三</span>
-                            <a href="https://www.facebook.com/share/p/17hqoX6amA" target="_blank" class="sub-btn fb-btn">輯四 (FB)</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 65週年 相冊 -->
-            <div class="gallery-item" onclick="loadPhotosFromJson('65週年校慶', './gallery/2015_65th/', '65th')">
-                <img src="./gallery/2015_65th/photos/5Q6A1143-1024.jpg" alt="65週年校慶">
-                <div class="gallery-info">
-                    <div class="gallery-title">65週年校慶專區</div>
-                    <div class="gallery-date" style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee;">📅 經典回顧</div>
-                </div>
-            </div>
-
-            <!-- 55週年 相冊 -->
-            <div class="gallery-item">
-                <img src="./gallery/2005_55th/photos/_Z1K5606.JPG" alt="55週年校慶專區">
-                <div class="gallery-info">
-                    <div class="gallery-title">55週年校慶專區</div>
-                    <div class="inline-links-container">
-                        <div class="gallery-date">📅 55週年校慶</div>
-                        <div class="sub-links-inline">
-                            <span onclick="loadPhotosFromJson('55週年校慶 - 輯一', './gallery/2005_55th/1/', '55th_1')" class="sub-btn">輯一</span>
-                            <span onclick="loadPhotosFromJson('55週年校慶 - 輯二', './gallery/2005_55th/2/', '55th_2')" class="sub-btn">輯二</span>
-                            <span onclick="loadPhotosFromJson('55週年校慶 - 輯三', './gallery/2005_55th/3/', '55th_3')" class="sub-btn">輯三</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 台灣行 相冊 -->
-            <div class="gallery-item" onclick="loadPhotosFromJson('台灣行', './gallery/2001_tw/', 'tw')">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="台灣行">
-                <div class="gallery-info">
-                    <div class="gallery-title">台灣行</div>
-                    <div class="gallery-date" style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #eee;">📅 2001年7月</div>
-                </div>
-            </div>
-
-        </div>
-
+        <div id="default-gallery-grid" class="gallery-grid" aria-live="polite"></div>
     </main>
 
-    <!-- 全螢幕燈箱 -->
-    <div id="main-lightbox" onclick="closeLightbox()">
-        <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        <span class="nav-btn prev-btn" onclick="prevPhoto(event)">&#10094;</span>
-        <span class="nav-btn next-btn" onclick="nextPhoto(event)">&#10095;</span>
-        <img id="lightboxImg" src="" alt="放大照片" onclick="event.stopPropagation()">
+    <div id="main-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="照片預覽" hidden>
+        <button type="button" class="close-btn" id="lightbox-close" aria-label="關閉預覽">&times;</button>
+        <button type="button" class="nav-btn prev-btn" id="lightbox-prev" aria-label="上一張">&#10094;</button>
+        <button type="button" class="nav-btn next-btn" id="lightbox-next" aria-label="下一張">&#10095;</button>
+        <img id="lightboxImg" src="" alt="放大照片">
         <div class="lightbox-info" id="lightboxInfo"></div>
     </div>
 
+    <div id="share-toast" class="toast" role="status" aria-live="polite" hidden></div>
     <div id="site-footer"></div>
 
     <script>
@@ -396,51 +57,151 @@
         let currentPhotoIndex = 0;
         let currentFolder = '';
         let currentAlbumKey = '';
+        let lastFocus = null;
+        let skipNextPop = false;
+        let albumTitles = {};
 
-        // 各相冊微調對應設定集 (Key 對應 URL 參數)
-        const albumRegistry = {
-            '75th_1': { title: '75週年校慶 - 輯一', folder: './gallery/2025_75th/1/' },
-            '75th_2': { title: '75週年校慶 - 輯二', folder: './gallery/2025_75th/2/' },
-            '75th_3': { title: '75週年校慶 - 輯三', folder: './gallery/2025_75th/3/' },
-            '65th':   { title: '65週年校慶',       folder: './gallery/2015_65th/' },
-            '55th_1': { title: '55週年校慶 - 輯一', folder: './gallery/2005_55th/1/' },
-            '55th_2': { title: '55週年校慶 - 輯二', folder: './gallery/2005_55th/2/' },
-            '55th_3': { title: '55週年校慶 - 輯三', folder: './gallery/2005_55th/3/' },
-            'tw':     { title: '台灣行',           folder: './gallery/2001_tw/' }
-        };
+        function escapeHtml(text) {
+            return String(text)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
 
-        /* 直接抓取照片目錄的 photos.json */
-        async function loadPhotosFromJson(title, folderPath, albumKey = '') {
+        function showToast(message) {
+            const toast = document.getElementById('share-toast');
+            toast.textContent = message;
+            toast.hidden = false;
+            setTimeout(() => { toast.hidden = true; }, 2200);
+        }
+
+        function createAlbumLink(link) {
+            const anchor = document.createElement('a');
+            anchor.className = 'sub-btn';
+            anchor.textContent = link.label || '';
+
+            if (link.album) {
+                anchor.href = `gallery.html?${encodeURIComponent(link.album)}`;
+                anchor.dataset.album = link.album;
+            } else if (link.url) {
+                anchor.href = link.url;
+                anchor.target = '_blank';
+                anchor.rel = 'noopener noreferrer';
+                anchor.classList.add('fb-btn');
+            }
+
+            return anchor;
+        }
+
+        function renderGalleryList(albums) {
+            const grid = document.getElementById('default-gallery-grid');
+            grid.replaceChildren();
+
+            albums.forEach((album) => {
+                const firstLink = album.links?.length > 1 ? album.links[0] : null;
+                const coverLink = album.album ? { album: album.album } : firstLink;
+                const item = document.createElement(coverLink?.album || coverLink?.url ? 'a' : 'div');
+                item.className = 'gallery-item';
+                if (coverLink?.album) {
+                    item.href = `gallery.html?${encodeURIComponent(coverLink.album)}`;
+                    item.dataset.album = coverLink.album;
+                } else if (coverLink?.url) {
+                    item.href = coverLink.url;
+                    item.target = '_blank';
+                    item.rel = 'noopener noreferrer';
+                }
+
+                const image = document.createElement('img');
+                image.src = album.image;
+                image.alt = album.alt || album.title || '相簿';
+
+                const info = document.createElement('div');
+                info.className = 'gallery-info';
+
+                const title = document.createElement('div');
+                title.className = 'gallery-title';
+                title.textContent = album.title || '';
+                info.appendChild(title);
+
+                if (album.date) {
+                    const date = document.createElement('div');
+                    date.className = `gallery-date${album.links?.length ? '' : ' gallery-date-separated'}`;
+                    date.textContent = `📅 ${album.date}`;
+                    info.appendChild(date);
+                }
+
+                if (album.links?.length) {
+                    const linksContainer = document.createElement('div');
+                    linksContainer.className = 'inline-links-container';
+                    const date = info.querySelector('.gallery-date');
+                    if (date) linksContainer.appendChild(date);
+
+                    const links = document.createElement('div');
+                    links.className = 'sub-links-inline';
+                    album.links.forEach((link) => links.appendChild(createAlbumLink(link)));
+                    linksContainer.appendChild(links);
+                    info.appendChild(linksContainer);
+                }
+
+                item.append(image, info);
+                grid.appendChild(item);
+            });
+        }
+
+        async function loadGalleryList() {
+            const grid = document.getElementById('default-gallery-grid');
+            try {
+                const response = await fetch('gallery/gallery.json');
+                if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                const data = await response.json();
+                const albums = Array.isArray(data) ? data : data.albums;
+                if (!Array.isArray(albums)) throw new Error('Invalid gallery data');
+                albumTitles = Object.fromEntries(albums.flatMap((album) => {
+                    const entries = [];
+                    if (album.album) entries.push([album.album, album.title]);
+                    (album.links || []).forEach((link) => {
+                        if (link.album) entries.push([link.album, `${album.title} - ${link.label}`]);
+                    });
+                    return entries;
+                }));
+                renderGalleryList(albums);
+            } catch (error) {
+                console.error('相簿清單載入失敗:', error);
+                grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #d32f2f;">相簿清單載入失敗。</p>';
+            }
+        }
+
+        async function loadPhotosFromJson(title, folderPath, albumKey = '', options = {}) {
             const panel = document.getElementById('gallery-panel');
             const panelTitle = document.getElementById('panel-title');
             const panelContent = document.getElementById('panel-content');
             const defaultGrid = document.getElementById('default-gallery-grid');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             currentFolder = folderPath.endsWith('/') ? folderPath : folderPath + '/';
             currentAlbumKey = albumKey;
 
-            panelTitle.innerText = title;
+            panelTitle.textContent = title;
             panelContent.innerHTML = '<p style="text-align:center; padding: 50px; color: #666;">載入照片中...</p>';
-
             defaultGrid.style.display = 'none';
             panel.style.display = 'block';
+            panel.classList.add('active');
 
-            // 更新 URL 網址列 (不重新整理頁面)
-            if (albumKey) {
-                const newUrl = `${window.location.pathname}?album=${encodeURIComponent(albumKey)}`;
-                window.history.pushState({ album: albumKey }, '', newUrl);
+            if (albumKey && !options.skipPush) {
+                const newUrl = `${window.location.pathname}?${encodeURIComponent(albumKey)}`;
+                const method = options.replace ? 'replaceState' : 'pushState';
+                window.history[method]({ album: albumKey }, '', newUrl);
             }
 
-            setTimeout(() => {
-                panel.classList.add('active');
-                panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 20);
+            if (!options.skipScroll) {
+                panel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+            }
 
             try {
                 const response = await fetch(currentFolder + 'photos.json');
                 if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-                
-                let data = await response.json();
+                const data = await response.json();
                 currentPhotoList = Array.isArray(data) ? data : (data.photos || []);
 
                 if (currentPhotoList.length === 0) {
@@ -448,68 +209,45 @@
                     return;
                 }
 
-                let gridHTML = '<div class="sub-gallery-grid">';
-                gridHTML += currentPhotoList.map((photo, index) => {
-                    let imgUrl = resolveUrl(photo);
-                    return `
-                        <div class="sub-photo-card" onclick="openLightbox(${index})">
-                            <img src="${imgUrl}" alt="${photo.title || '照片'}" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x200?text=Photo+Not+Found';">
-                        </div>
-                    `;
+                const cards = currentPhotoList.map((photo, index) => {
+                    const imgUrl = escapeHtml(resolveUrl(photo));
+                    const alt = escapeHtml(photo.title || '照片');
+                    return `<button type="button" class="sub-photo-card" data-index="${index}" aria-label="開啟照片 ${alt}">
+                        <img src="${imgUrl}" alt="${alt}" loading="lazy">
+                    </button>`;
                 }).join('');
-                gridHTML += '</div>';
-
-                panelContent.innerHTML = gridHTML;
-
+                panelContent.innerHTML = `<div class="sub-gallery-grid">${cards}</div>`;
             } catch (error) {
                 console.error('載入失敗:', error);
-                panelContent.innerHTML = `<p style="color:#d32f2f; text-align:center; padding: 30px;">⚠️ 載入照片失敗。<br><small style="color:#666;">找不到檔案：${currentFolder}photos.json</small></p>`;
+                panelContent.innerHTML = `<p style="color:#d32f2f; text-align:center; padding: 30px;">載入照片失敗。<br><small style="color:#666;">找不到檔案：${escapeHtml(currentFolder)}photos.json</small></p>`;
             }
         }
 
-        /* 複製相冊專屬連結至剪貼簿 */
         function copyAlbumLink() {
             const shareUrl = window.location.href;
-            
+            const done = () => showToast('已複製相冊連結');
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    alert('✅ 已複製相冊連結，您可以貼上並分享給其他人！');
-                }).catch(err => {
-                    fallbackCopyTextToClipboard(shareUrl);
-                });
+                navigator.clipboard.writeText(shareUrl).then(done).catch(() => fallbackCopyTextToClipboard(shareUrl));
             } else {
                 fallbackCopyTextToClipboard(shareUrl);
             }
         }
 
-        /* 相容舊式複製邏輯 */
         function fallbackCopyTextToClipboard(text) {
-            const textArea = document.createElement("textarea");
+            const textArea = document.createElement('textarea');
             textArea.value = text;
-            textArea.style.position = "fixed";
+            textArea.style.position = 'fixed';
             document.body.appendChild(textArea);
-            textArea.focus();
             textArea.select();
             try {
                 document.execCommand('copy');
-                alert('✅ 已複製相冊連結！');
+                showToast('已複製相冊連結');
             } catch (err) {
-                alert('⚠️ 複製失敗，請手動複製地址列的網址。');
+                showToast('請手動複製地址列網址');
             }
             document.body.removeChild(textArea);
         }
 
-        /* 檢查 URL 參數並自動開啟指定相冊 */
-        function checkUrlParam() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const albumParam = urlParams.get('album');
-            if (albumParam && albumRegistry[albumParam]) {
-                const target = albumRegistry[albumParam];
-                loadPhotosFromJson(target.title, target.folder, albumParam);
-            }
-        }
-
-        /* 路徑解析邏輯 */
         function resolveUrl(photo) {
             let file = photo.src || photo.filename || photo.thumb || '';
             if (file.startsWith('http') || file.startsWith('/')) return file;
@@ -517,34 +255,45 @@
             return currentFolder + file;
         }
 
-        function closeGalleryPanel() {
+        function closeGalleryPanel(options = {}) {
             const panel = document.getElementById('gallery-panel');
             const defaultGrid = document.getElementById('default-gallery-grid');
-
             panel.classList.remove('active');
             panel.style.display = 'none';
             defaultGrid.style.display = 'grid';
+            currentAlbumKey = '';
+            if (!options.skipPush) {
+                window.history.pushState({}, '', window.location.pathname);
+            }
+        }
 
-            // 清除 URL 參數
-            window.history.pushState({}, '', window.location.pathname);
+        function getFocusable(lightbox) {
+            return Array.from(lightbox.querySelectorAll('button, [href], img')).filter((el) => !el.hasAttribute('disabled'));
         }
 
         function openLightbox(index) {
             if (!currentPhotoList[index]) return;
             currentPhotoIndex = index;
+            lastFocus = document.activeElement;
             updateLightboxImg();
-            document.getElementById('main-lightbox').classList.add('active');
+            const lightbox = document.getElementById('main-lightbox');
+            lightbox.classList.add('active');
+            lightbox.hidden = false;
+            document.getElementById('lightbox-close').focus();
         }
 
         function closeLightbox() {
-            document.getElementById('main-lightbox').classList.remove('active');
+            const lightbox = document.getElementById('main-lightbox');
+            lightbox.classList.remove('active');
+            lightbox.hidden = true;
+            if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
         }
 
         function updateLightboxImg() {
             const photo = currentPhotoList[currentPhotoIndex];
             if (!photo) return;
-
             document.getElementById('lightboxImg').src = resolveUrl(photo);
+            document.getElementById('lightboxImg').alt = photo.title || '放大照片';
             document.getElementById('lightboxInfo').textContent = `${currentPhotoIndex + 1} / ${currentPhotoList.length}`;
         }
 
@@ -562,17 +311,96 @@
             updateLightboxImg();
         }
 
-        document.addEventListener('keydown', function(e) {
-            const lightbox = document.getElementById('main-lightbox');
-            if (!lightbox || !lightbox.classList.contains('active')) return;
-            if (e.key === 'ArrowRight') nextPhoto();
-            if (e.key === 'ArrowLeft') prevPhoto();
-            if (e.key === 'Escape') closeLightbox();
+        function resolveAlbum(albumPath) {
+            const normalizedPath = String(albumPath || '').replace(/^\/+|\/+$/g, '');
+            const segments = normalizedPath.split('/');
+            const isSafePath = normalizedPath && segments.every((segment) => (
+                segment && segment !== '.' && segment !== '..' && !/[\\:?#]/.test(segment)
+            ));
+            if (!isSafePath) return null;
+
+            const folder = `./gallery/${normalizedPath}/`;
+            const fallbackTitle = segments[segments.length - 1].replace(/[_-]+/g, ' ');
+            return {
+                title: albumTitles[normalizedPath] || fallbackTitle,
+                folder
+            };
+        }
+
+        function openAlbumFromKey(albumKey, options) {
+            const target = resolveAlbum(albumKey);
+            if (!target) return;
+            loadPhotosFromJson(target.title, target.folder, albumKey, options);
+        }
+
+        function checkUrlParam(options) {
+            const albumParam = Array.from(new URLSearchParams(window.location.search).keys())[0] || '';
+            if (resolveAlbum(albumParam)) {
+                openAlbumFromKey(albumParam, options || { skipPush: true, replace: true });
+            } else {
+                closeGalleryPanel({ skipPush: true });
+            }
+        }
+
+        document.getElementById('copy-album-btn').addEventListener('click', copyAlbumLink);
+        document.getElementById('close-album-btn').addEventListener('click', () => closeGalleryPanel());
+        document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+        document.getElementById('lightbox-prev').addEventListener('click', prevPhoto);
+        document.getElementById('lightbox-next').addEventListener('click', nextPhoto);
+        document.getElementById('lightboxImg').addEventListener('click', (e) => e.stopPropagation());
+        document.getElementById('main-lightbox').addEventListener('click', closeLightbox);
+
+        document.getElementById('default-gallery-grid').addEventListener('click', (e) => {
+            const link = e.target.closest('[data-album]');
+            if (!link) return;
+            e.preventDefault();
+            openAlbumFromKey(link.getAttribute('data-album'));
         });
 
-        // 頁面初次載入時檢查是否含有相冊參數
-        document.addEventListener('DOMContentLoaded', checkUrlParam);
-    </script>
+        document.getElementById('panel-content').addEventListener('click', (e) => {
+            const card = e.target.closest('.sub-photo-card');
+            if (!card) return;
+            openLightbox(Number(card.dataset.index));
+        });
 
+        document.addEventListener('keydown', function (e) {
+            const lightbox = document.getElementById('main-lightbox');
+            const galleryPanel = document.getElementById('gallery-panel');
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                } else if (galleryPanel.classList.contains('active')) {
+                    closeGalleryPanel();
+                }
+                return;
+            }
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'ArrowRight') nextPhoto();
+            if (e.key === 'ArrowLeft') prevPhoto();
+            if (e.key === 'Tab') {
+                const focusable = getFocusable(lightbox);
+                if (!focusable.length) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+
+        window.addEventListener('popstate', () => {
+            checkUrlParam({ skipPush: true, skipScroll: true });
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadGalleryList();
+            checkUrlParam({ skipPush: true, replace: true });
+        });
+    </script>
 </body>
 </html>

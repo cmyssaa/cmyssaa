@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動資訊 | 天主教鳴遠中學校友會</title>
+    <meta name="description" content="天主教鳴遠中學校友會活動資訊。">
+    <meta property="og:title" content="活動資訊 | 天主教鳴遠中學校友會">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="layout.js" defer></script>
+</head>
+<body class="page-event">
+
+    <div id="site-header"></div>
+    <noscript>
+        <nav><a href="index.html">首頁</a> · <a href="event.html">活動資訊</a></nav>
+    </noscript>
+
+    <div id="event-root"></div>
+
+    <div id="site-footer"></div>
+
+    <script>
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderEvent(data) {
+            const root = document.getElementById('event-root');
+            if (!data) {
+                root.innerHTML = '<main class="container" id="main-content"><section class="card"><h3 class="card-title">活動資訊</h3><p>活動資料載入失敗。</p></section></main>';
+                return;
+            }
+
+            root.innerHTML = `
+                <section class="hero event-hero">
+                    <span class="event-badge">${escapeHtml(data.badge || '')}</span>
+                    <h1>${escapeHtml(data.title || '')}</h1>
+                    <h2>${escapeHtml(data.subtitle || '')}</h2>
+                    <div class="quick-info-bar">
+                        <div class="info-item"><strong>📅 日期：</strong>${escapeHtml(data.date || '')}</div>
+                        <div class="info-item"><strong>⏰ 時間：</strong>${escapeHtml(data.time || '')}</div>
+                        <div class="info-item"><strong>📍 地點：</strong>${escapeHtml(data.location || '')}</div>
+                    </div>
+                </section>
+
+                <main class="container" id="main-content">
+                    <section class="card">
+                        <h3 class="card-title">🎉 活動節目安排</h3>
+                        ${Array.isArray(data.programs) ? data.programs.map((program) => `
+                            <div class="timeline-section">
+                                <div class="timeline-header" ${program.slot && program.slot.includes('6:00 pm') ? 'style="background-color: var(--secondary-color); color: var(--primary-color);"' : ''}>${escapeHtml(program.slot || '')}</div>
+                                <div class="activity-grid">
+                                    ${(program.items || []).map((item) => `<div class="activity-item">${escapeHtml(item)}</div>`).join('')}
+                                </div>
+                            </div>
+                        `).join('') : ''}
+                    </section>
+
+                    <section class="card">
+                        <h3 class="card-title">💰 報名費用與須知</h3>
+                        <div class="price-box">
+                            ${(Array.isArray(data.fees) ? data.fees : []).map((fee) => `
+                                <div class="price-row">
+                                    <span>${escapeHtml(fee.label || '')}</span>
+                                    <span class="price-amount">${escapeHtml(fee.amount || '')}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 10px;">${escapeHtml(data.note || '')}</p>
+                    </section>
+
+                    <section class="card" style="border-left-color: var(--accent-red);">
+                        <h3 class="card-title">📝 立即報名 / 參與支持</h3>
+                        <p>歡迎選擇以下方式完成報名或以不同形式支持校友會活動：</p>
+                        <div class="btn-group">
+                            ${(Array.isArray(data.registration) ? data.registration : []).map((item, index) => {
+                                const classNames = ['btn'];
+                                if (index === 0) classNames.push('btn-main');
+                                else if (index === 1) classNames.push('btn-secondary');
+                                else classNames.push('btn-gold');
+                                return `<a href="${escapeHtml(item.url || '#')}" target="_blank" rel="noopener noreferrer" class="${classNames.join(' ')}">${escapeHtml(item.label || '')}</a>`;
+                            }).join('')}
+                        </div>
+                        <div style="margin-top: 25px; padding: 15px; background: #fff8e7; border-radius: 6px;">
+                            <strong>💵 現金付款方式：</strong><br>
+                            ${escapeHtml(data.paymentNote || '')}
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <h3 class="card-title">📞 查詢及聯絡</h3>
+                        <div class="contact-box">
+                            ${(Array.isArray(data.contacts) ? data.contacts : []).map((contact) => `
+                                <div class="contact-item">
+                                    ${escapeHtml(contact.type === 'WhatsApp' ? '📱 WhatsApp：' : contact.type === 'Email' ? '✉️ Email：' : '🌐 Facebook：')}
+                                    <a href="${escapeHtml(contact.url || '#')}" target="_blank" rel="noopener noreferrer" style="color: ${contact.type === 'Facebook' ? 'var(--primary-color)' : '#25D366'}; font-weight: bold;">
+                                        ${escapeHtml(contact.label || '')}
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </main>
+            `;
+        }
+
+        async function loadEventPage() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const eventKey = Array.from(params.keys())[0];
+                if (!eventKey) throw new Error('Event key is missing');
+
+                const jsonUrl = `${eventKey}.json`;
+                const response = await fetch(jsonUrl, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error('Event JSON not found');
+                }
+                const data = await response.json();
+                document.title = `${data.title || '活動資訊'} | 天主教鳴遠中學校友會`;
+                renderEvent(data);
+            } catch (error) {
+                console.error('Failed to load event data:', error);
+                document.getElementById('event-root').innerHTML = `
+                    <main class="container" id="main-content">
+                        <section class="card">
+                            <h3 class="card-title">活動資訊</h3>
+                            <p>載入活動資料失敗，請確認參數是否正確。</p>
+                        </section>
+                    </main>
+                `;
+            }
+        }
+
+        loadEventPage();
+    </script>
+</body>
+</html>

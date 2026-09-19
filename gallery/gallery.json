@@ -1,0 +1,41 @@
+{
+    "albums": [
+        {
+            "title": "75週年鑽禧校慶",
+            "image": "./gallery/2025_75th/1/photos/75周年晚宴照片%20學生與校友合照18.jpg",
+            "alt": "75週年鑽禧校慶",
+            "date": "2025-12-19",
+            "links": [
+                { "label": "輯一", "album": "2025_75th/1" },
+                { "label": "輯二", "album": "2025_75th/2" },
+                { "label": "輯三", "album": "2025_75th/3" },
+                { "label": "輯四 (FB)", "url": "https://www.facebook.com/share/p/17hqoX6amA", "external": true }
+            ]
+        },
+        {
+            "title": "65週年校慶",
+            "image": "./gallery/2015_65th/photos/5Q6A1360-1024.jpg",
+            "alt": "65週年校慶",
+            "date": "2015",
+            "album": "2015_65th"
+        },
+        {
+            "title": "55週年校慶",
+            "image": "./gallery/2005_55th/photos/_Z1K5606.JPG",
+            "alt": "55週年校慶",
+            "date": "2005",
+            "links": [
+                { "label": "輯一", "album": "2005_55th/1" },
+                { "label": "輯二", "album": "2005_55th/2" },
+                { "label": "輯三", "album": "2005_55th/3" }
+            ]
+        },
+        {
+            "title": "台灣行",
+            "image": "./gallery/2001_tw/photos/0001.jpg",
+            "alt": "台灣行",
+            "date": "2001-07",
+            "album": "2001_tw"
+        }
+    ]
+}

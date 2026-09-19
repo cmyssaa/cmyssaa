@@ -5,142 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>校舍變化 | 天主教鳴遠中學校友會</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --primary-color: #003366;
-            --secondary-color: #d4af37;
-            --light-bg: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-dark: #2c3e50;
-            --border-color: #e2e8f0;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.8;
-            background-color: var(--light-bg);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Banner 區塊 */
-        .page-banner {
-            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
-                        url('school/54mlight.jpg') center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .page-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .page-banner p {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        /* 介紹卡片 */
-        .intro-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            border-left: 5px solid var(--secondary-color);
-        }
-
-        .intro-card p {
-            font-size: 1.05rem;
-            color: #006600;
-            margin: 0;
-            text-align: justify;
-            line-height: 1.8;
-        }
-
-        /* 相片網格區塊 */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .photo-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            padding: 15px;
-            transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 51, 102, 0.12);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .photo-card p {
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .intro-card {
-                padding: 20px;
-            }
-            .page-banner h2 {
-                font-size: 1.8rem;
-            }
-            .photo-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
-            }
-            .photo-card img {
-                height: 110px;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="page-school">
 
     <!-- 頁面 Banner -->
-    <section class="page-banner">
+    <section class="page-banner banner-school">
         <h2>校舍變化</h2>
         <p>從茅舍草創到現代化校舍 ‧ 見證鳴遠歲月足跡</p>
     </section>
 
     <!-- 主內容區 -->
-    <main class="container">
+    <main class="container" id="main-content">
+        <div class="school-layout">
 
         <!-- 簡介區塊 -->
         <div class="intro-card">
@@ -263,6 +139,7 @@
                 <img src="school/93schdoor2.jpg" alt="2000新校大門">
                 <p>2000新校大門</p>
             </div>
+        </div>
         </div>
 
     </main>

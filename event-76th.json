@@ -1,0 +1,34 @@
+{
+  "title": "天主教鳴遠中學 76 周年校慶",
+  "subtitle": "校友回校日 暨 盆菜晚宴",
+  "badge": "盛事熱慶 ‧ 歡聚一堂",
+  "date": "2026 年 12 月 12 日（六）",
+  "time": "3:30 pm - 8:30 pm",
+  "location": "將軍澳厚德邨 母校禮堂",
+  "programs": [
+    {
+      "slot": "時段 A：3:30 pm - 6:00 pm (日間嘉年華)",
+      "items": ["🏫 參觀學校", "⚽ 體育活動聯誼", "🎤 歡樂卡拉 OK", "🩺 中醫義診諮詢服務", "✂️ 長者免費剪髮 （名額有限）", "🧧 校友陳燦生書法老師為大家寫揮春"]
+    },
+    {
+      "slot": "時段 B：6:00 pm - 8:30 pm (盆菜晚宴)",
+      "items": ["📋 校友會會員大會", "🍲 傳統滋味盆菜晚宴", "🌟 校友/師生才藝表演", "🎁 幸運大抽獎"]
+    }
+  ],
+  "fees": [
+    { "label": "成人", "amount": "HK$ 200 / 位" },
+    { "label": "12 歲以下小童 或 65 歲以上長者", "amount": "HK$ 180 / 位" }
+  ],
+  "note": "* 備註：一經報名及繳費，恕不設退款。",
+  "registration": [
+    { "label": "線上電子報名表（銀行入數）", "url": "https://forms.gle/mJWhjod34HJxWZ7X8" },
+    { "label": "義務工作人員招募報名", "url": "https://forms.gle/15xfihuFimywb6ri8" },
+    { "label": "活動贊助邀請登記", "url": "https://forms.gle/9TQP7NCZVsxXDE8L6" }
+  ],
+  "paymentNote": "可於校務處辦公時間內聯絡職員 黃嘉琪小姐（電話：2702 7102）辦理。",
+  "contacts": [
+    { "type": "WhatsApp", "label": "+852 6652 7102", "url": "https://wa.me/85266527102" },
+    { "type": "Email", "label": "cmyssaa.1950@gmail.com", "url": "mailto:cmyssaa.1950@gmail.com" },
+    { "type": "Facebook", "label": "fb.com/cmyssaa", "url": "https://www.facebook.com/cmyssaa" }
+  ]
+}

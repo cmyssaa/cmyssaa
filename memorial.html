@@ -4,156 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>紀念雷鳴遠神父 | 天主教鳴遠中學校友會</title>
+    <meta name="description" content="紀念雷鳴遠神父：全犧牲、真愛人、常喜樂。">
+    <meta property="og:title" content="紀念雷鳴遠神父 | 天主教鳴遠中學校友會">
+    <meta property="og:description" content="全犧牲 ‧ 真愛人 ‧ 常喜樂">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --primary-color: #003366;
-            --secondary-color: #d4af37;
-            --light-bg: #f8f9fa;
-            --text-dark: #2c3e50;
-            --text-muted: #666666;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.8;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Banner 區塊 */
-        .page-banner {
-            position: relative;
-            background-color: #002347;
-            background-image: linear-gradient(rgba(0, 35, 71, 0.8), rgba(0, 35, 71, 0.85)), 
-                              url('https://images.unsplash.com/photo-1519817650390-64a93db51149?q=80&w=1470&auto=format&fit=crop');
-            background-position: center;
-            background-size: cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 12px;
-            max-width: 1000px;
-            margin: 20px auto 0 auto;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .page-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-            font-weight: 700;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-        }
-
-        .page-banner p {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        /* 核心名言區塊 */
-        .quote-card {
-            background-color: #f4f6f9;
-            border-left: 5px solid var(--secondary-color);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-
-        .quote-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 51, 102, 0.12);
-        }
-
-        .quote-card blockquote {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 0 0 10px 0;
-            line-height: 1.6;
-        }
-
-        /* 事蹟網格卡片與質感懸停 */
-        .memorial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .memorial-card {
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-top: 4px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 25px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-        }
-
-        .memorial-card:hover {
-            transform: translateY(-5px);
-            border-top-color: var(--secondary-color);
-            box-shadow: 0 10px 22px rgba(0, 51, 102, 0.12);
-        }
-
-        .memorial-card h3 {
-            color: var(--primary-color);
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .memorial-card p {
-            color: #444444;
-            font-size: 0.98rem;
-            margin-bottom: 0;
-        }
-
-        /* 底部行動按鈕 */
-        .external-link-section {
-            text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .btn-link {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #ffffff !important;
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-link:hover {
-            background-color: #004d99;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-        }
-    </style>
+    <script src="layout.js" defer></script>
 </head>
-<body>
+<body class="page-memorial">
 
-    <!-- 頁面 Banner -->
+    <div id="site-header"></div>
     <section class="page-banner">
         <h2>紀念偉人 ‧ 雷鳴遠神父</h2>
         <p>全犧牲 ‧ 真愛人 ‧ 常喜樂</p>
@@ -165,7 +28,7 @@
         <!-- 神父精神名言區塊 -->
         <div class="quote-card">
             <blockquote>「我全心愛中國，我是中國人；我為中國活，也為中國死。」</blockquote>
-            <p style="text-align: right; margin: 0; color: #666; font-weight: bold;">—— 雷鳴遠神父 (Fr. Vincent Lebbe)</p>
+            <p class="quote-attribution">—— 雷鳴遠神父 (Fr. Vincent Lebbe)</p>
         </div>
 
         <!-- 神父生平事蹟網格 -->
@@ -188,8 +51,8 @@
 
         <!-- 外部延伸資料區塊 -->
         <div class="external-link-section">
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;">想深入了解雷鳴遠神父生平？</h3>
-            <p style="color: #666; margin-bottom: 20px;">歡迎閱讀詳細文獻與歷史紀錄資料。</p>
+            <h3 class="external-link-title">想深入了解雷鳴遠神父生平？</h3>
+            <p class="external-link-description">歡迎閱讀詳細文獻與歷史紀錄資料。</p>
             <a href="https://zh.wikipedia.org/zh-hk/雷鳴遠" target="_blank" class="btn-link">參閱雷鳴遠神父維基百科頁面 →</a>
         </div>
 

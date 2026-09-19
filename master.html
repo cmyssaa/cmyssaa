@@ -4,157 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>歷任校長 | 天主教鳴遠中學校友會</title>
-    <!-- 引入共用樣式表與組件載入腳本 -->
+    <meta name="description" content="天主教鳴遠中學歷任校長影像，春風化雨、薪火相傳。">
+    <meta property="og:title" content="歷任校長 | 天主教鳴遠中學校友會">
+    <meta property="og:description" content="春風化雨 ‧ 薪火相傳">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="layout.js" defer></script>
-    <style>
-        :root {
-            --primary-color: #003366; /* 鳴遠藍 */
-            --secondary-color: #d4af37; /* 聖潔金 */
-            --light-bg: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-dark: #2c3e50;
-            --border-color: #e2e8f0;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.8;
-            background-color: var(--light-bg);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Page Banner */
-        .page-banner {
-            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
-                        url('school/54mlight.jpg') center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .page-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .page-banner p {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 40px auto 60px auto;
-            padding: 0 20px;
-        }
-
-        /* 歷任校長網格 */
-        .principal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 25px;
-            justify-content: center;
-        }
-
-        .principal-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-        }
-
-        .principal-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 51, 102, 0.15);
-        }
-
-        .principal-card img {
-            width: 120px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 600px) {
-            .principal-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                gap: 15px;
-            }
-            .principal-card img {
-                width: 100px;
-                height: 135px;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="page-principals">
 
-    <!-- 頂部導航列（由 layout.js 動態引入 header.html） -->
     <div id="site-header"></div>
+    <noscript>
+        <nav><a href="index.html">首頁</a> · <a href="history.html?master">鳴遠簡史</a></nav>
+    </noscript>
 
-    <!-- 頁面 Banner -->
-    <section class="page-banner">
+    <section class="page-banner banner-school">
         <h2>歷任校長</h2>
         <p>春風化雨 ‧ 薪火相傳</p>
     </section>
 
-    <!-- 主內容區 -->
-    <main class="container">
+    <main class="container" id="main-content">
         <div class="principal-grid">
-            <div class="principal-card">
-                <img src="master/aaa.gif" alt="歷任校長相片 A">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/bbb.gif" alt="歷任校長相片 B">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/ccc.gif" alt="歷任校長相片 C">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/ddd.gif" alt="歷任校長相片 D">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/eee.gif" alt="歷任校長相片 E">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/fff.gif" alt="歷任校長相片 F">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/ggg.gif" alt="歷任校長相片 G">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/hhh.gif" alt="歷任校長相片 H">
-            </div>
-
-            <div class="principal-card">
-                <img src="master/iii.gif" alt="歷任校長相片 I">
-            </div>
+            <div class="principal-card"><img src="master/aaa.gif" alt="歷任校長相片 A"></div>
+            <div class="principal-card"><img src="master/bbb.gif" alt="歷任校長相片 B"></div>
+            <div class="principal-card"><img src="master/ccc.gif" alt="歷任校長相片 C"></div>
+            <div class="principal-card"><img src="master/ddd.gif" alt="歷任校長相片 D"></div>
+            <div class="principal-card"><img src="master/eee.gif" alt="歷任校長相片 E"></div>
+            <div class="principal-card"><img src="master/fff.gif" alt="歷任校長相片 F"></div>
+            <div class="principal-card"><img src="master/ggg.gif" alt="歷任校長相片 G"></div>
+            <div class="principal-card"><img src="master/hhh.gif" alt="歷任校長相片 H"></div>
+            <div class="principal-card"><img src="master/iii.gif" alt="歷任校長相片 I"></div>
         </div>
     </main>
 
-    <!-- 頁尾區塊（由 layout.js 動態引入 footer.html） -->
     <div id="site-footer"></div>
-
 </body>
 </html>

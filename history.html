@@ -4,382 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>鳴遠簡史 | 天主教鳴遠中學校友會</title>
-    <!-- 引入共用樣式表與組件載入腳本 -->
+    <meta name="description" content="天主教鳴遠中學自 1950 年創校簡史：調景嶺草創、遷校將軍澳，以及雷鳴遠神父、曹立珊神父等專題。">
+    <meta property="og:title" content="鳴遠簡史 | 天主教鳴遠中學校友會">
+    <meta property="og:description" content="自 1950 年草創自強 ‧ 傳承天主教育精神">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.png">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="layout.js" defer></script>
-    <style>
-        :root {
-            --primary-color: #003366; /* 鳴遠藍 */
-            --secondary-color: #d4af37; /* 聖潔金 */
-            --light-bg: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-dark: #2c3e50;
-            --text-muted: #666666;
-            --border-color: #e0e0e0;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.8;
-            background-color: var(--light-bg);
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Page Banner */
-        .page-banner {
-            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), 
-                        url('https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=1350&q=80') center/cover;
-            color: #ffffff;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .page-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            color: #ffffff;
-        }
-
-        .page-banner p {
-            font-size: 1.1rem;
-            color: #ffffff;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        /* 按鈕群組容器 */
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .memorial-btn, .founder-btn, .principal-btn, .school-btn, .song-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            border: none;
-        }
-
-        .memorial-btn {
-            background-color: #004d99;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .memorial-btn:hover, .memorial-btn.active {
-            background-color: #0066cc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-
-        .founder-btn {
-            background-color: var(--secondary-color);
-            color: #003366 !important;
-        }
-
-        .founder-btn:hover, .founder-btn.active {
-            background-color: #e5be38;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-
-        .principal-btn {
-            background-color: #8e24aa;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .principal-btn:hover, .principal-btn.active {
-            background-color: #ab47bc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-
-        .school-btn {
-            background-color: #2e7d32;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .school-btn:hover, .school-btn.active {
-            background-color: #388e3c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-
-        .song-btn {
-            background-color: #d81b60;
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .song-btn:hover, .song-btn.active {
-            background-color: #e91e63;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-            min-height: 600px; /* 設定最小高度保護，確保切換時畫面不坍塌 */
-        }
-
-        .intro-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
-            border-left: 5px solid var(--secondary-color);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .intro-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
-        }
-
-        .intro-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-        /* 動態面板容器 */
-        .dynamic-panel {
-            display: none;
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            border-top: 4px solid var(--primary-color);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            transform: translateY(-10px);
-        }
-
-        .dynamic-panel.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .dynamic-panel h4 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 8px;
-        }
-
-        .panel-content {
-            width: 100%;
-            min-height: 400px; /* 給予內部足夠的最小高度 */
-            transition: all 0.3s ease;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: #cbd5e1;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 40px;
-            position: relative;
-            width: 50%;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 40px;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-        }
-
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            background-color: var(--secondary-color);
-            border: 4px solid var(--primary-color);
-            border-radius: 50%;
-            position: absolute;
-            top: 15px;
-            z-index: 10;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
-        }
-
-        .timeline-content {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            position: relative;
-            transition: all 0.3s ease-in-out;
-            border-top: 3px solid transparent;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 51, 102, 0.12);
-            border-top: 3px solid var(--secondary-color);
-        }
-
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.25);
-            background-color: var(--primary-color);
-            border-color: var(--secondary-color);
-        }
-
-        .timeline-year {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            display: inline-block;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 2px;
-        }
-
-        .timeline-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #1e293b;
-        }
-
-        .timeline-body p {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: #e2e8f0;
-            color: #475569;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 50px !important;
-                padding-right: 0 !important;
-            }
-
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-
-            .timeline-dot {
-                left: 10px !important;
-            }
-
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="page-history">
 
-    <!-- 頂部導航列 -->
     <div id="site-header"></div>
+    <noscript>
+        <nav><a href="index.html">首頁</a> · <a href="history.html">鳴遠簡史</a></nav>
+    </noscript>
 
-    <!-- 頁面 Banner -->
-    <section class="page-banner">
+    <section class="page-banner banner-photo">
         <h2>鳴遠簡史</h2>
         <p>自 1950 年草創自強 ‧ 傳承天主教育精神</p>
-        <div class="btn-group">
-            <button class="memorial-btn" onclick="loadAndTogglePanel('panel-memorial', 'memorial.html')">✝️ 雷鳴遠神父</button>
-            <button class="founder-btn" onclick="loadAndTogglePanel('panel-founder', 'firstmas.html')">🏫 曹立珊神父</button>
-            <button class="principal-btn" onclick="loadAndTogglePanel('panel-principal', 'master.html')">👔 歷任校長</button>
-            <button class="school-btn" onclick="loadAndTogglePanel('panel-school', 'school.html')">🖼️ 校舍演變</button>
-            <button class="song-btn" onclick="loadAndTogglePanel('panel-song', 'song.html')">🎵 母校校歌</button>
+        <div class="history-topic-btns btn-group">
+            <button type="button" class="memorial-btn" data-topic="memorial" data-panel="panel-memorial">✝️ 雷鳴遠神父</button>
+            <button type="button" class="founder-btn" data-topic="firstmas" data-panel="panel-founder">🏫 曹立珊神父</button>
+            <button type="button" class="principal-btn" data-topic="master" data-panel="panel-principal">👔 歷任校長</button>
+            <button type="button" class="school-btn" data-topic="school" data-panel="panel-school">🖼️ 校舍演變</button>
+            <button type="button" class="song-btn" data-topic="song" data-panel="panel-song">🎵 母校校歌</button>
         </div>
     </section>
 
-    <!-- 主內容區 -->
-    <main class="container">
-
-        <!-- 動態展現面板 -->
+    <main class="container" id="main-content">
         <div id="panel-memorial" class="dynamic-panel">
             <h4>✝️ 雷鳴遠神父</h4>
             <div class="panel-content"></div>
         </div>
-
         <div id="panel-founder" class="dynamic-panel">
             <h4>🏫 曹立珊神父</h4>
             <div class="panel-content"></div>
         </div>
-
         <div id="panel-principal" class="dynamic-panel">
             <h4>👔 歷任校長</h4>
             <div class="panel-content"></div>
         </div>
-
         <div id="panel-school" class="dynamic-panel">
             <h4>🖼️ 校舍演變</h4>
             <div class="panel-content"></div>
         </div>
-
         <div id="panel-song" class="dynamic-panel">
             <h4>🎵 母校校歌</h4>
             <div class="panel-content"></div>
         </div>
 
-        <!-- 預設簡史與時間軸內容 -->
         <div id="default-history-content">
-            
             <div class="intro-card">
                 <h3>歲月流芳 ‧ 薪火相傳</h3>
                 <p>天主教鳴遠中學自 1950 年創校以來，歷經調景嶺葵棚木屋草創期、露比颱風後的堅毅重建，直至 1993 年遷往將軍澳現址。幾十年來在歷任神父、校監及校長的領導下，資料保存完整，栽培無數莘莘學子，見證了香港教育與社會的蓬勃發展。</p>
@@ -398,7 +74,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -410,7 +85,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -422,7 +96,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -434,7 +107,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -446,7 +118,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -459,24 +130,31 @@
                 </div>
             </div>
         </div>
-
     </main>
 
-    <!-- 頁尾區塊 -->
     <div id="site-footer"></div>
 
     <script>
-        async function loadAndTogglePanel(panelId, pageUrl) {
+        const topicButtons = Array.from(document.querySelectorAll('.history-topic-btns button'));
+        const topicRegistry = Object.fromEntries(topicButtons.map((button) => [button.dataset.topic, button]));
+
+        topicButtons.forEach((btn) => {
+            btn.addEventListener('click', () => loadAndTogglePanel(btn.dataset.panel, btn.dataset.topic));
+        });
+
+        async function loadAndTogglePanel(panelId, topic, options = {}) {
+            const pageUrl = `${topic}.html`;
             const targetPanel = document.getElementById(panelId);
             const contentDiv = targetPanel.querySelector('.panel-content');
             const defaultContent = document.getElementById('default-history-content');
             const isCurrentlyActive = targetPanel.classList.contains('active');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // 隱藏所有動態面板
             document.querySelectorAll('.dynamic-panel').forEach(panel => {
                 panel.classList.remove('active');
                 panel.style.display = 'none';
             });
+            topicButtons.forEach(button => button.classList.remove('is-active'));
 
             if (!isCurrentlyActive) {
                 if (!contentDiv.dataset.loaded) {
@@ -484,42 +162,65 @@
                         contentDiv.innerHTML = '<p style="text-align:center; padding: 40px; color: #666;">資料載入中...</p>';
                         const response = await fetch(pageUrl);
                         const htmlText = await response.text();
-                        
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(htmlText, 'text/html');
-                        
-                        // 1. 抓取子頁面內的所有 <style> 樣式，確保圖片與網格（Grid）格式正確
                         const styles = doc.querySelectorAll('style');
                         let styleHTML = '';
-                        styles.forEach(style => {
-                            styleHTML += style.outerHTML;
-                        });
-
-                        // 2. 抓取子頁面的 main 或 body 內容
+                        styles.forEach(style => { styleHTML += style.outerHTML; });
                         const mainContent = doc.querySelector('main') || doc.body;
-                        
-                        // 3. 將樣式與內容同步放入面板中
                         contentDiv.innerHTML = styleHTML + mainContent.innerHTML;
-                        contentDiv.dataset.loaded = "true";
+                        contentDiv.dataset.loaded = 'true';
                     } catch (error) {
                         contentDiv.innerHTML = '<p style="color:red; text-align:center; padding: 20px;">內容載入失敗，請稍後再試。</p>';
                     }
                 }
-
                 defaultContent.style.display = 'none';
                 targetPanel.style.display = 'block';
-                
-                setTimeout(() => {
-                    targetPanel.classList.add('active');
-                    targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 20);
-
+                targetPanel.classList.add('active');
+                topicRegistry[topic]?.classList.add('is-active');
+                if (!options.skipPush) {
+                    window.history.pushState({ topic }, '', `${window.location.pathname}?${encodeURIComponent(topic)}`);
+                }
+                if (!options.skipScroll) {
+                    targetPanel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                }
             } else {
                 targetPanel.classList.remove('active');
                 targetPanel.style.display = 'none';
                 defaultContent.style.display = 'block';
+                if (!options.skipPush) window.history.pushState({}, '', window.location.pathname);
             }
         }
+
+        function checkTopicParam(options = {}) {
+            const topic = Array.from(new URLSearchParams(window.location.search).keys())[0] || '';
+            const button = topicRegistry[topic];
+            if (button) {
+                loadAndTogglePanel(button.dataset.panel, topic, { ...options, skipPush: true });
+                return;
+            }
+            document.querySelectorAll('.dynamic-panel').forEach(panel => {
+                panel.classList.remove('active');
+                panel.style.display = 'none';
+            });
+            topicButtons.forEach(button => button.classList.remove('is-active'));
+            document.getElementById('default-history-content').style.display = 'block';
+        }
+
+        window.addEventListener('popstate', () => checkTopicParam({ skipScroll: true }));
+        document.addEventListener('DOMContentLoaded', () => checkTopicParam());
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            const activePanel = document.querySelector('.dynamic-panel.active');
+            if (!activePanel) return;
+            event.preventDefault();
+            activePanel.classList.remove('active');
+            activePanel.style.display = 'none';
+            topicButtons.forEach(button => button.classList.remove('is-active'));
+            document.getElementById('default-history-content').style.display = 'block';
+            window.history.pushState({}, '', window.location.pathname);
+        });
     </script>
 </body>
 </html>
