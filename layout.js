@@ -107,23 +107,12 @@ function highlightActiveNav() {
 }
 
 function initMobileNav() {
-    const toggle = document.querySelector(".nav-toggle");
     const nav = document.getElementById("site-nav");
-    if (!toggle || !nav) return;
-
-    toggle.addEventListener("click", () => {
-        const open = !nav.classList.contains("is-open");
-        nav.classList.toggle("is-open", open);
-        toggle.setAttribute("aria-expanded", String(open));
-        toggle.setAttribute("aria-label", open ? "關閉選單" : "開啟選單");
-        toggle.setAttribute("aria-pressed", String(open));
-    });
+    if (!nav) return;
 
     nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
             nav.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-            toggle.setAttribute("aria-label", "開啟選單");
         });
     });
 }
