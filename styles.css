@@ -1596,13 +1596,6 @@ footer {
         width: 100%;
         margin-left: 0;
         order: 4;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    #site-nav::-webkit-scrollbar {
-        display: none;
     }
 
     #site-nav.is-open {
@@ -1610,13 +1603,13 @@ footer {
     }
 
     nav ul {
+        display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 4px;
         padding: 4px 0 2px;
-        white-space: nowrap;
-        min-width: max-content;
+        white-space: normal;
     }
 
     nav a {
