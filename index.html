@@ -67,7 +67,7 @@
         const AUDIO_KEY = 'cmyssaa-audio-playing';
 
         function setPlayingUI(playing) {
-            toggleBtn.textContent = playing ? '暫停' : '播放';
+            toggleBtn.textContent = playing ? '❚❚ 暫停' : '▶ 播放';
             toggleBtn.setAttribute('aria-label', playing ? '暫停校歌' : '播放校歌');
             toggleBtn.setAttribute('aria-pressed', String(playing));
             try { localStorage.setItem(AUDIO_KEY, playing ? '1' : '0'); } catch (e) {}
