@@ -351,6 +351,8 @@
         document.getElementById('main-lightbox').addEventListener('click', closeLightbox);
 
         document.getElementById('default-gallery-grid').addEventListener('click', (e) => {
+            const clickedAnchor = e.target.closest('a');
+            if (clickedAnchor && !clickedAnchor.dataset.album) return;
             const link = e.target.closest('[data-album]');
             if (!link) return;
             e.preventDefault();

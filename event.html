@@ -103,7 +103,7 @@
                         <div class="contact-box">
                             ${(Array.isArray(data.contacts) ? data.contacts : []).map((contact) => `
                                 <div class="contact-item">
-                                    ${escapeHtml(contact.type === 'WhatsApp' ? '📱 WhatsApp：' : contact.type === 'Email' ? '✉️ Email：' : '🌐 Facebook：')}
+                                    ${contact.type === 'WhatsApp' ? '<span class="footer-social-badge wa-badge" aria-hidden="true"><i class="fa-brands fa-whatsapp"></i></span>' : contact.type === 'Email' ? '<span class="footer-social-badge mail-badge" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>' : '<span class="footer-social-badge fb-badge" aria-hidden="true"><i class="fa-brands fa-facebook-f"></i></span>'}
                                     <a href="${escapeHtml(contact.url || '#')}" target="_blank" rel="noopener noreferrer" style="color: ${contact.type === 'Facebook' ? 'var(--primary-color)' : '#25D366'}; font-weight: bold;">
                                         ${escapeHtml(contact.label || '')}
                                     </a>
