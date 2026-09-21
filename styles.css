@@ -1644,6 +1644,9 @@ footer {
     }
 
     .page-banner,
+    .page-banner.banner-photo,
+    .page-banner.banner-building,
+    .page-banner.banner-school,
     .page-memorial .page-banner {
         background-image: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)),
                           url('campus.jpg');
