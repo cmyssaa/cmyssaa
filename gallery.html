@@ -69,6 +69,15 @@
                 .replace(/"/g, '&quot;');
         }
 
+        function resolveGalleryImage(imagePath) {
+            if (!imagePath) return 'campus.jpg';
+            try {
+                return new URL(imagePath, document.baseURI).href;
+            } catch (error) {
+                return 'campus.jpg';
+            }
+        }
+
         function showToast(message) {
             const toast = document.getElementById('share-toast');
             toast.textContent = message;
@@ -99,8 +108,9 @@
             grid.replaceChildren();
 
             albums.forEach((album) => {
-                const firstLink = album.links?.length > 1 ? album.links[0] : null;
-                const coverLink = album.album ? { album: album.album } : firstLink;
+                const firstLink = album.links?.find((link) => link.album || link.url);
+                const coverLink = album.album ? { album: album.album } : album.url ? { url: album.url } : firstLink;
+                if (!coverLink?.album && !coverLink?.url) return;
                 const item = document.createElement(coverLink?.album || coverLink?.url ? 'a' : 'div');
                 item.className = 'gallery-item';
                 if (coverLink?.album) {
@@ -111,10 +121,6 @@
                     item.target = '_blank';
                     item.rel = 'noopener noreferrer';
                 }
-
-                const image = document.createElement('img');
-                image.src = album.image;
-                image.alt = album.alt || album.title || '相簿';
 
                 const info = document.createElement('div');
                 info.className = 'gallery-info';
@@ -144,7 +150,11 @@
                     info.appendChild(linksContainer);
                 }
 
-                item.append(image, info);
+                const image = document.createElement('img');
+                image.src = resolveGalleryImage(album.image);
+                image.alt = album.alt || album.title || '相簿';
+                item.appendChild(image);
+                item.appendChild(info);
                 grid.appendChild(item);
             });
         }

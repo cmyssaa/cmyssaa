@@ -1643,6 +1643,17 @@ footer {
         min-height: 180px;
     }
 
+    .page-banner,
+    .page-memorial .page-banner {
+        background-image: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)),
+                          url('campus.jpg');
+    }
+
+    .hero {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+                          url('campus.jpg');
+    }
+
     .page-banner h2,
     .hero h2,
     .event-hero h1 {
