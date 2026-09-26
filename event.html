@@ -57,14 +57,16 @@
                 <main class="container" id="main-content">
                     <section class="card">
                         <h3 class="card-title">🎉 活動節目安排</h3>
-                        ${Array.isArray(data.programs) ? data.programs.map((program) => `
-                            <div class="timeline-section">
-                                <div class="timeline-header" ${program.slot && program.slot.includes('6:00 pm') ? 'style="background-color: var(--secondary-color); color: var(--primary-color);"' : ''}>${escapeHtml(program.slot || '')}</div>
-                                <div class="activity-grid">
-                                    ${(program.items || []).map((item) => `<div class="activity-item">${escapeHtml(item)}</div>`).join('')}
+                        <div class="timeline-grid">
+                            ${Array.isArray(data.programs) ? data.programs.map((program) => `
+                                <div class="timeline-section">
+                                    <div class="timeline-header" ${program.slot && program.slot.includes('6:00 pm') ? 'style="background-color: var(--secondary-color); color: var(--primary-color);"' : ''}>${escapeHtml(program.slot || '')}</div>
+                                    <div class="activity-grid">
+                                        ${(program.items || []).map((item) => `<div class="activity-item">${escapeHtml(item)}</div>`).join('')}
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('') : ''}
+                            `).join('') : ''}
+                        </div>
                     </section>
 
                     <section class="card">
